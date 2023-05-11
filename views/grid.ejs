@@ -1,0 +1,95 @@
+<%-include('header')%>
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Confirm Addmission Tables</h5>
+                            </div>
+                          
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/manager"><i
+                                                    class="feather icon-home"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="/manager/add_addmission">Addmission</a></li>
+                                        <!-- <li class="breadcrumb-item"><a href="#!">GRID Tables</a></li> -->
+                                    </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Addmissions</h5>
+                            <!-- <span class="d-block m-t-5">use class <code>table</code> inside table element</span> -->
+                        </div>
+                        <div class="card-body table-border-style">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>GRID</th>
+                                            <th>Student Name</th>
+                                            <th>email</th>
+                                            <th>course</th>
+                                            <th>action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%var d=data.slice(-1)%>
+                                            <tr>
+                                                <input type="text" id="grid_id" value="<%=d[0]['_id']%>" hidden>
+                                                <% for(var i=1000; i<data.length; i++){%>
+                                                    <td name="grid" id="grid"><%=i++%></td>
+                                                    <%}%>
+                                                        <td id="dd">
+                                                            <%=i+data.length%>
+                                                        </td>
+                                                        <td>
+                                                            <%=data[0]['name']%>
+                                                        </td>
+                                                        <td>
+                                                            <%=data[0]['email']%>
+                                                        </td>
+                                                        <td>
+                                                            <%=data[0]['cource']%>
+                                                        </td>
+                                                        <td><a href="/manager/view_student" onclick="grid()"
+                                                                class="btn btn-primary text-white px-2 py-1">confirm</a>
+                                                        </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+
+        function grid() {
+
+            var grid = document.getElementById('dd').innerHTML;
+            var grid_id = document.getElementById('grid_id').value;
+            //  alert(grid)
+            $.ajax({
+                url: '/manager/generate_grid',
+                type: 'post',
+                data: {
+                    grid: grid,
+                    grid_id: grid_id
+                }
+            })
+
+        }
+
+    </script>
+
+
+    <%-include('footer')%>
