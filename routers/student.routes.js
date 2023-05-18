@@ -39,7 +39,7 @@ router.get("/login", (req, res) => {
 
 router.post("/login", loginStudent);
 
-router.get('/about', (req, res) => {
+router.get('/about', student_token,(req, res) => {
     const token = req.cookies.jwt;
     const secret = process.env.SECRET_KEY;
 
@@ -56,7 +56,7 @@ router.get('/about', (req, res) => {
     });
 })
 
-router.get('/team', (req, res) => {
+router.get('/team',student_token, (req, res) => {
 
     const token = req.cookies.jwt;
     const secret = process.env.SECRET_KEY;
@@ -75,7 +75,7 @@ router.get('/team', (req, res) => {
 
 })
 
-router.get('/contact', (req, res) => {
+router.get('/contact',student_token, (req, res) => {
     const token = req.cookies.jwt;
     const secret = process.env.SECRET_KEY;
 

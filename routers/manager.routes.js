@@ -88,7 +88,6 @@ router.get('/logout',manager_token,async(req,res) => {
   
     res.cookie('jwt', '', { maxAge: 1 });
     const token = req.headers.authorization;
-
     tokenBlacklist.push(token);
     res.redirect("/manager");
       

@@ -19,6 +19,14 @@
             text.style.background = "#ffcfcf";
         }, 2000);
     }
+
+    window.addEventListener('pageshow', (event) => {
+  // Check if the page is retrieved from the bfcache
+  if (event.persisted && !document.cookie.match(/jwt/)) {
+    // Force a reload if the user has logged out
+    location.reload();
+  }
+ });
 </script>
 </body>
 
