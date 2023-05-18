@@ -128,10 +128,14 @@ router.get('/changePass', student_token, async (req, res) => {
     })
 
 })
+ var tokenBlacklist =[];
 router.post('/newpass', student_token, newpass)
 router.get('/logout',async(req,res)=>{
     
     res.cookie('jwt', '', { maxAge: 1 });
+    const token = req.headers.authorization;
+
+    tokenBlacklist.push(token);
     res.redirect("/student");
 
 })

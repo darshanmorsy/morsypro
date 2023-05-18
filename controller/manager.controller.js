@@ -467,9 +467,7 @@ exports.update_student_data = async (req, res) => {
             if (error) {
                 console.log(error);
             }
-
             console.log(result);
-
         });
         req.body.image = uploadedProfileImageDetails.url
         req.body.cloudinary_id = uploadedProfileImageDetails.public_id

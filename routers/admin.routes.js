@@ -20,6 +20,15 @@ router.get("/",admin_token, dashboardAdmin);
 router.post("/",admin_token, managerRegister);
 router.get("/delete_manager/:id",admin_token,deleteManager);
 router.post("/recents_updates",admin_token,image_upload.array("image_post"), recents_updates);
+ var tokenBlacklist=[];
+router.get('/logout',admin_token,async(req,res) => {
 
+    res.cookie('jwt', '', { maxAge: 1 });
+    const token = req.headers.authorization;
+
+    tokenBlacklist.push(token);
+    res.redirect("/admin");
+      
+     });
 
 module.exports = router;
