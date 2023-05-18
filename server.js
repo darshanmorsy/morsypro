@@ -10,23 +10,23 @@ const session = require('express-session');
 const http=require('http');
 require("dotenv").config();
 const port = process.env.PORT || 3000;
-// require("./db/connection");
+require("./db/connection");
 app.use(session({
     secret: 'mysecret', // Replace with your own secret key
     resave: false,
     saveUninitialized: false
   }));
   
-const mongoose = require('mongoose');
-const db = 'mongodb+srv://morsy:morsy@ds.6e7bjag.mongodb.net/morsy'
-mongoose.connect(db, { 
-            // useCreateIndex: true, 
-            // useFindAndModify: false, 
-            useNewUrlParser: true, 
-            useUnifiedTopology: true 
-      })
-    .then(() => console.log('MongoDB connected...'))
-    .catch(err => console.log(err));
+// const mongoose = require('mongoose');
+// const db = 'mongodb+srv://morsy:morsy@ds.6e7bjag.mongodb.net/morsy'
+// mongoose.connect(db, { 
+//             // useCreateIndex: true, 
+//             // useFindAndModify: false, 
+//             useNewUrlParser: true, 
+//             useUnifiedTopology: true 
+//       })
+//     .then(() => console.log('MongoDB connected...'))
+//     .catch(err => console.log(err));
 app.use(flash());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

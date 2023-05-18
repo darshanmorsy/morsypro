@@ -133,9 +133,9 @@ router.post('/newpass', student_token, newpass)
 router.get('/logout',async(req,res)=>{
     
     res.cookie('jwt', '', { maxAge: 1 });
-    const token = req.headers.authorization;
+    // const token = req.headers.authorization;
 
-    tokenBlacklist.push(token);
+    // tokenBlacklist.push(token);
     res.redirect("/student");
 
 })
