@@ -56,68 +56,20 @@ exports.managerAdmin = async (req, res) => {
         const deactiveEnquiry = await Enquiry.find({ status: false });
         const managerData = await Manager.find();
 
-        function formatAMPM(date) {
-            var hours = date.getHours();
-            var minutes = date.getMinutes();
-            var ampm = hours >= 12 ? 'pm' : 'am';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            hours = hours < 10 ? '0' + hours : hours; // add leading zero if less than 10
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            var strTime = hours + ':' + minutes + ' ' + ampm;
-
-            return strTime;
-        }
-
-        var times = formatAMPM(new Date);
-        var hours=times[0]+times[1]+times[6]+times[7];
-        console.log(hours);
-
-        // console.log(now.get);
-        var batches = await Student.find({});
-        if(hours=='07am'){
-              batches = await Student.aggregate([{ $match: { batch_time:"07:00 am" } }])
-        }
-        else if(hours=='08am'){
-             batches = await Student.aggregate([{ $match: { batch_time:"08:00 am" } }])
-        }
-        else if(hours=='09am'){
-             batches = await Student.aggregate([{ $match: { batch_time:"09:00 am" } }])
-        }
-        else if(hours=='10am'){
-             batches = await Student.aggregate([{ $match: { batch_time:"10:00 am" } }])
-        }
-        else if(hours=='11am'){
-             batches = await Student.aggregate([{ $match: { batch_time:"11:00 am" } }])
-        }
-        else if(hours=='12'){
-             batches = await Student.aggregate([{ $match: { batch_time:"12:00 pm" } }])
-        }
-        else if(hours=='01pm'){
-             batches = await Student.aggregate([{ $match: { batch_time:"01:00 pm" } }])
-        }
-        else if(hours=='02pm'){
-             batches = await Student.aggregate([{ $match: { batch_time:"02:00 pm" } }])
-        }
-        else if(hours=='03pm'){
-             batches = await Student.aggregate([{ $match: { batch_time:"03:00 pm" } }])
-        }
-        else if(hours=='04pm'){
-             batches = await Student.aggregate([{ $match: { batch_time:"04:00 pm" } }])
-        }
-        else if(hours=='05pm'){
-             batches = await Student.aggregate([{ $match: { batch_time:"05:00 pm" } }])
-        }
-        else if(hours=='06pm'){
-             batches = await Student.aggregate([{ $match: { batch_time:"06:00 pm" } }])
-        }
-        else if(hours=='07pm'){
-             batches = await Student.aggregate([{ $match: { batch_time:"07:00 pm" } }])
-        }
-        else if(hours=='08pm'){
-             batches = await Student.aggregate([{ $match: { batch_time:"08:00 pm" } }])
-        }
-
+        // function formatAMPM(date) {
+        //     var hours = date.getHours();
+        //     var minutes = date.getMinutes();
+        //     var ampm = hours >= 12 ? 'pm' : 'am';
+        //     hours = hours % 12;
+        //     hours = hours ? hours : 12; // the hour '0' should be '12'
+        //     hours = hours < 10 ? '0' + hours : hours; // add leading zero if less than 10
+        //     minutes = minutes < 10 ? '0' + minutes : minutes;
+        //     var strTime = hours + ':' + minutes + ' ' + ampm;
+        //     return strTime;
+        // }
+        // var times = formatAMPM(new Date);
+        // var hours=times[0]+times[1]+times[6]+times[7];
+        // console.log(hours);
 
         res.render('manager_dashboard',
             {
@@ -126,7 +78,6 @@ exports.managerAdmin = async (req, res) => {
                 activeEnquiry,
                 deactiveEnquiry,
                 managerData,
-                batches
             });
 
 
@@ -394,7 +345,7 @@ exports.add_student_data = async (req, res) => {
         }
         req.body.image = uploadedProfileImageDetails.url
         req.body.cloudinary_id = uploadedProfileImageDetails.public_id
-        data = await Student.create(req.body)
+        data = await Student.create(req.body);
         if (data) {
             console.log('addmission added successfully');
             return res.redirect('/manager/view_student');
