@@ -11,10 +11,10 @@ const studentSchema = async (req, res, next) => {
             });
             console.log(verifystudent);
             if (verifystudent == undefined) {
-                res.status(404).json({
-                    message: "TOKEN CANNOT MATCH!",
-                    status: 404,
-                });
+                res.redirect('/student/login');
+                
+                console.log("token cannot match");
+
             } else {
                 const studentData = await Student.findById({ _id: verifystudent._id });
                 if (studentData == null) {

@@ -56,20 +56,27 @@ exports.managerAdmin = async (req, res) => {
         const deactiveEnquiry = await Enquiry.find({ status: false });
         const managerData = await Manager.find();
 
-        // function formatAMPM(date) {
-        //     var hours = date.getHours();
-        //     var minutes = date.getMinutes();
-        //     var ampm = hours >= 12 ? 'pm' : 'am';
-        //     hours = hours % 12;
-        //     hours = hours ? hours : 12; // the hour '0' should be '12'
-        //     hours = hours < 10 ? '0' + hours : hours; // add leading zero if less than 10
-        //     minutes = minutes < 10 ? '0' + minutes : minutes;
-        //     var strTime = hours + ':' + minutes + ' ' + ampm;
-        //     return strTime;
-        // }
-        // var times = formatAMPM(new Date);
-        // var hours=times[0]+times[1]+times[6]+times[7];
-        // console.log(hours);
+        function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            hours = hours < 10 ? '0' + hours : hours; // add leading zero if less than 10
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return strTime;
+        }
+        var times = formatAMPM(new Date);
+        var hours=times[0]+times[1]+times[6]+times[7];
+        console.log(hours);
+        var time=hours[0]+hours[1]+':00 '+hours[2]+hours[3];
+        console.log(time);
+        var tim =String(time)
+        console.log(tim,'k');
+        var batches=await Student.find({ batch_time:tim});
+
+        console.log(batches);
 
         res.render('manager_dashboard',
             {
@@ -78,6 +85,7 @@ exports.managerAdmin = async (req, res) => {
                 activeEnquiry,
                 deactiveEnquiry,
                 managerData,
+                batches
             });
 
 
@@ -581,24 +589,24 @@ exports.student_color_number = async (req, res) => {
 
 }
 
-exports.dd=async(req,res)=>{
+// exports.dd=async(req,res)=>{
 
-    const html = fs.readFileSync('index.html', 'utf-8');
-    // Create a new workbook and worksheet
-    const workbook = XLSX.utils.book_new();
-    const worksheet = XLSX.utils.aoa_to_sheet([]);
+//     const html = fs.readFileSync('index.html', 'utf-8');
+//     // Create a new workbook and worksheet
+//     const workbook = XLSX.utils.book_new();
+//     const worksheet = XLSX.utils.aoa_to_sheet([]);
     
-    // Parse the HTML table using the SheetJS library
-    const table = XLSX.utils.table_to_sheet(html);
+//     // Parse the HTML table using the SheetJS library
+//     const table = XLSX.utils.table_to_sheet(html);
     
-    // Copy the table data to the worksheet
-    XLSX.utils.sheet_add_aoa(worksheet, XLSX.utils.sheet_to_json(table, { header: 1 }));
+//     // Copy the table data to the worksheet
+//     XLSX.utils.sheet_add_aoa(worksheet, XLSX.utils.sheet_to_json(table, { header: 1 }));
     
-    // Add the worksheet to the workbook
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+//     // Add the worksheet to the workbook
+//     XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
     
-    // Write the workbook to an Excel file
-    XLSX.writeFile(workbook, 'my-excel-file.xlsx');
-    res.redirect('/manager')
+//     // Write the workbook to an Excel file
+//     XLSX.writeFile(workbook, 'my-excel-file.xlsx');
+//     res.redirect('/manager')
 
-}
+// }

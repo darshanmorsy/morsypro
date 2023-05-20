@@ -75,6 +75,9 @@ var studentSchema = mongoose.Schema({
     },
     batch_time:{
         type: String,
+    },
+    present_status:{
+        type:Number
     }
 });
 

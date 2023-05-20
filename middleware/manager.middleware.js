@@ -12,10 +12,8 @@ const managerSchema = async (req, res, next) => {
             );
             console.log(verifymanager);
             if (verifymanager == undefined) {
-                res.status(404).json({
-                    message: "TOKEN CANNOT MATCH!",
-                    status: 404,
-                });
+                res.redirect('/manager/login')
+                console.log("token cannot match");
             } else {
                 const managerData = await manager.findById({ _id: verifymanager._id });
                 if (managerData == null) {

@@ -24,7 +24,7 @@ const {
     student_color_number,
     update_student_page,
     update_student_data,
-    dd
+    // dd
 
 } = require("../controller/manager.controller");
 
@@ -77,15 +77,15 @@ router.post('/pay_fees',manager_token,pay_fees);
 router.get('/update_student/:id',manager_token,update_student_page)
 router.post('/update_student_data',manager_token,uploads.single('image'),update_student_data);
 
-
-router.get('/ss',dd);
-
+// router.get('/ss',dd);
 
 router.post('/student_color_number',manager_token,student_color_number);
+
+
+
 var tokenBlacklist=[]
 router.get('/logout',manager_token,async(req,res) => {
 
-  
     res.cookie('jwt', '', { maxAge: 1 });
     const token = req.headers.authorization;
     tokenBlacklist.push(token);

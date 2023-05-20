@@ -12,10 +12,9 @@ const adminSchema = async (req, res, next) => {
             );
             console.log(verifyAdmin);
             if (verifyAdmin == undefined) {
-                res.status(404).json({
-                    message: "TOKEN CANNOT MATCH!",
-                    status: 404,
-                });
+
+                res.redirect('/admin/login')
+                
             } else {
                 const adminData = await Admin.findById({ _id: verifyAdmin._id });
                 if (adminData == null) {
