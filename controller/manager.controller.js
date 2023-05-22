@@ -629,7 +629,7 @@ exports.absent=async(req,res) => {
     if(absent){
         
         console.log("absent");
-        res.redirect('back')
+        res.redirect('back');
  
     }
 }
