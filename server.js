@@ -10,7 +10,7 @@ const session = require('express-session');
 const http=require('http');
 require("dotenv").config();
 const port = process.env.PORT || 3000;
-require("./db/connection");
+// require("./db/connection");
 app.use(session({
     secret: 'mysecret', // Replace with your own secret key
     resave: false,
