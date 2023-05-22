@@ -77,7 +77,8 @@ var studentSchema = mongoose.Schema({
         type: String,
     },
     present_status:{
-        type:Number
+        type:Number,
+        default:0
     }
 });
 

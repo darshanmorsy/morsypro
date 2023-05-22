@@ -24,6 +24,8 @@ const {
     student_color_number,
     update_student_page,
     update_student_data,
+    presents,
+    absent,
     // dd
 
 } = require("../controller/manager.controller");
@@ -80,6 +82,8 @@ router.post('/update_student_data',manager_token,uploads.single('image'),update_
 // router.get('/ss',dd);
 
 router.post('/student_color_number',manager_token,student_color_number);
+router.get('/presents/:id',manager_token,presents)
+router.get('/absent/:id',manager_token,absent)
 
 
 

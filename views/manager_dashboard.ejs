@@ -27,7 +27,7 @@
                     <div class="col-sm-6">
                         <div class="card p-2 support-bar overflow-hidden">
                            <table class="p-2">
-                            <tr>
+                            <tr class="py-3">
                                 <td>name</td>
                                 <td>course</td>
                                 <td>phone</td>
@@ -39,36 +39,33 @@
                                 <td><%=batches[i].name%></td>
                                 <td><%=batches[i].cource%></td>
                                 <td><%=batches[i].phone%></td>
-                                <td><a href="/manager/presents/<%=batches[i].id%>">€</a></td>
+                                <td><a href="/manager/presents/<%=batches[i].id%>">p</a></td>
                             </tr>
                             <%}%>
                            </table>
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="card support-bar overflow-hidden">
-                            <div class="card-body pb-0">
-                                <h2 class="m-0">350</h2>
-                                <span class="text-c-green">Support Requests</span>
-                                <p class="mb-3 mt-3">Total number of support requests that come in.</p>
-                            </div>
-                            <div id="support-chart1"></div>
-                            <div class="card-footer bg-success text-white">
-                                <div class="row text-center">
-                                    <div class="col">
-                                        <h4 class="m-0 text-white">10</h4>
-                                        <span>Open</span>
-                                    </div>
-                                    <div class="col">
-                                        <h4 class="m-0 text-white">5</h4>
-                                        <span>Running</span>
-                                    </div>
-                                    <div class="col">
-                                        <h4 class="m-0 text-white">3</h4>
-                                        <span>Solved</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card p-2 support-bar overflow-hidden">
+                          
+                            <table class="p-2">
+                                <tr class="py-3">
+                                    <td>name</td>
+                                    <td>course</td>
+                                    <td>phone</td>
+                                    <td>action</td>
+                                </tr>
+                                <%var s=0%>
+                                <%for(var i=0; i<present.length; i++){%>
+                                <tr class="p-2">
+                                    <td><%=present[i].name%></td>
+                                    <td><%=present[i].cource%></td>
+                                    <td><%=present[i].phone%></td>
+                                    <td><a href="/manager/absent/<%=present[i].id%>">a</a></td>
+                                </tr>
+                                <%}%>
+                               </table>
+                            
                         </div>
                     </div>
                 </div>

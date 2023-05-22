@@ -74,7 +74,8 @@ exports.managerAdmin = async (req, res) => {
         console.log(time);
         var tim =String(time)
         console.log(tim,'k');
-        var batches=await Student.find({ batch_time:tim});
+        var batches=await Student.find({ batch_time:tim, present_status:0});
+        var present=await Student.find({ batch_time:tim , present_status:1});
 
         console.log(batches);
 
@@ -85,7 +86,8 @@ exports.managerAdmin = async (req, res) => {
                 activeEnquiry,
                 deactiveEnquiry,
                 managerData,
-                batches
+                batches,
+                present
             });
 
 
@@ -610,3 +612,24 @@ exports.student_color_number = async (req, res) => {
 //     res.redirect('/manager')
 
 // }
+
+exports.presents=async(req,res) => {
+
+    var presents=await Student.findByIdAndUpdate(req.params.id,{present_status:1});
+    if(presents){
+ 
+        console.log("present");
+        res.redirect('back')
+        
+    }
+}
+exports.absent=async(req,res) => {
+    
+    var absent=await Student.findByIdAndUpdate(req.params.id,{present_status:0});
+    if(absent){
+        
+        console.log("absent");
+        res.redirect('back')
+ 
+    }
+}

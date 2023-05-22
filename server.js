@@ -17,16 +17,16 @@ app.use(session({
     saveUninitialized: false
   }));
   
-const mongoose = require('mongoose');
-const db = 'mongodb+srv://morsy:morsy@ds.6e7bjag.mongodb.net/morsy'
-mongoose.connect(db, { 
-            // useCreateIndex: true, 
-            // useFindAndModify: false, 
-            useNewUrlParser: true, 
-            useUnifiedTopology: true 
-      })
-    .then(() => console.log('MongoDB connected...'))
-    .catch(err => console.log(err));
+// const mongoose = require('mongoose');
+// const db = 'mongodb+srv://morsy:morsy@ds.6e7bjag.mongodb.net/morsy'
+// mongoose.connect(db, { 
+//             // useCreateIndex: true, 
+//             // useFindAndModify: false, 
+//             useNewUrlParser: true, 
+//             useUnifiedTopology: true 
+//       })
+//     .then(() => console.log('MongoDB connected...'))
+//     .catch(err => console.log(err));
 app.use(flash());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
