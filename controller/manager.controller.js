@@ -428,6 +428,7 @@ exports.update_student_data = async (req, res) => {
         const cloudinary_id = req.body.cloudinary_id;
 
         cloudinary.uploader.destroy(cloudinary_id, function (error, result) {
+            
             if (err) {
                 console.log(err);
             }
