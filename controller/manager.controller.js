@@ -57,20 +57,19 @@ exports.managerAdmin = async (req, res) => {
         const managerData = await Manager.find();
 
         function formatAMPM(date) {
-            var hours = date.getUTCHours(); // Get the UTC hours instead of local hours
-            var minutes = date.getUTCMinutes(); // Get the UTC minutes instead of local minutes
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
             var ampm = hours >= 12 ? 'pm' : 'am';
             hours = hours % 12;
-            hours = hours ? hours : 12;
-            hours = hours < 10 ? '0' + hours : hours;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            hours = hours < 10 ? '0' + hours : hours; // add leading zero if less than 10
             minutes = minutes < 10 ? '0' + minutes : minutes;
             var strTime = hours + ':' + minutes + ' ' + ampm;
             return strTime;
         }
-        
-        var currentTime = new Date();
-        console.log(currentTime);
-        var times = formatAMPM(currentTime);
+        var current_time=new Date();
+        console.log(current_time);
+        var times = formatAMPM(current_time);
         var hours = times[0] + times[1] + times[6] + times[7];
         console.log(hours);
         var time = hours[0] + hours[1] + ':00 ' + hours[2] + hours[3];
