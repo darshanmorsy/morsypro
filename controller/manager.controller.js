@@ -216,7 +216,7 @@ exports.default_enq_color = async (req, res) => {
     try {
         // console.log(req.body,'color default');
         var enquiry_number = await Enquiry.findByIdAndUpdate(req.body.id, { enquiry_number: 1 })
-        const RED_TIME = 24 * 60 * 60 * 1000; // 2 minutes in milliseconds
+        const RED_TIME =  10 * 1000; // 2 minutes in milliseconds
 
         let intervalId = null;
         let greenTime = {};
