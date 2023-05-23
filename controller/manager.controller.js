@@ -67,17 +67,19 @@ exports.managerAdmin = async (req, res) => {
             var strTime = hours + ':' + minutes + ' ' + ampm;
             return strTime;
         }
-        var times = formatAMPM(new Date);
-        var hours=times[0]+times[1]+times[6]+times[7];
+        
+        var times = formatAMPM(new Date());
+        var hours = times[0] + times[1] + times[6] + times[7];
         console.log(hours);
-        var time=hours[0]+hours[1]+':00 '+hours[2]+hours[3];
+        var time = hours[0] + hours[1] + ':00 ' + hours[2] + hours[3];
         console.log(time);
-        var tim =String(time)
-        console.log(tim,'k');
+        var tim = String(time);
+        console.log(tim, 'k');
+        
         var batches=await Student.find({ batch_time:tim, present_status:0});
         var present=await Student.find({ batch_time:tim , present_status:1});
 
-        console.log(batches);
+        // console.log(batches);
 
         res.render('manager_dashboard',
             {
@@ -115,7 +117,7 @@ exports.add_enquiry_data = async (req, res, next) => {
         res.status(500).json({
             message: "SOMETHING WENT WRONG",
             status: 500
-        })
+        });
     }
 }
 
