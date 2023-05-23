@@ -79,7 +79,7 @@ exports.managerAdmin = async (req, res) => {
         var batches=await Student.find({ batch_time:tim, present_status:0});
         var present=await Student.find({ batch_time:tim , present_status:1});
 
-        // console.log(batches);
+        console.log("OOOO",Date());
 
         res.render('manager_dashboard',
             {
