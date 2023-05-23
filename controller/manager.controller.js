@@ -356,7 +356,8 @@ exports.add_student_data = async (req, res) => {
             req.body.pending_fees = pending_fees;
             req.body.password = req.body.phone;
         }
-        req.body.image = uploadedProfileImageDetails.url
+        req.body.image = uploadedProfileImageDetails.secure_url
+        console.log(uploadedProfileImageDetails);
         req.body.cloudinary_id = uploadedProfileImageDetails.public_id
         data = await Student.create(req.body);
         if (data) {
@@ -433,7 +434,7 @@ exports.update_student_data = async (req, res) => {
             }
             console.log(result);
         });
-        req.body.image = uploadedProfileImageDetails.url
+        req.body.image = uploadedProfileImageDetails.secure_url
         req.body.cloudinary_id = uploadedProfileImageDetails.public_id
         const updatedata = await Student.findByIdAndUpdate(req.body.id, req.body);
         if (updatedata) {
