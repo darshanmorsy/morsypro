@@ -68,7 +68,7 @@ exports.managerAdmin = async (req, res) => {
             return strTime;
         }
         
-        var times = formatAMPM(new Date.now());
+        var times = formatAMPM(new Date(Date.now()));
         var hours = times[0] + times[1] + times[6] + times[7];
         console.log(hours);
         var time = hours[0] + hours[1] + ':00 ' + hours[2] + hours[3];
