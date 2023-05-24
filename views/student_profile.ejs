@@ -165,7 +165,15 @@
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-
+<script>
+        window.addEventListener('pageshow', (event) => {
+  // Check if the page is retrieved from the bfcache
+  if (event.persisted && !document.cookie.match(/jwt/)) {
+    // Force a reload if the user has logged out
+    location.reload();
+  }
+ });
+</script>
 
   </body>
 

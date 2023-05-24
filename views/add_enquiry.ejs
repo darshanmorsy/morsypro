@@ -28,6 +28,13 @@
                     <div class="card">
                         <div class="card-body">
                             <h5>Add enquiry</h5>
+                            <% if (messages.success) { %>
+                           
+                              <div class="alert my-4 alert-success">
+                                  <%= messages.success %>
+                              </div>
+                             
+                              <% } %>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">

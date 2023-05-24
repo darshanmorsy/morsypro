@@ -34,6 +34,7 @@ exports.loginManager = async (req, res, next) => {
                     expires: new Date(Date.now() + 5 * 1000 * 1000 * 1000),
                     httpOnly: true
                 });
+                req.flash("success","hello")
                 res.redirect("/manager");
             }
         }
@@ -110,7 +111,7 @@ exports.add_enquiry_data = async (req, res, next) => {
         var add_enquiry_data = await Enquiry.create(req.body)
         if (add_enquiry_data) {
             console.log('enquiry added successfully');
-            req.flash('success', 'Enquiry added successfully');
+            req.flash('success','Enquiry added successfully'); 
             res.redirect('back');
         }
     } catch (err) {

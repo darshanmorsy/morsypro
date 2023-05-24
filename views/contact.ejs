@@ -83,5 +83,13 @@
     </section><!-- End Contact Section -->
   </main>
   <script src="../assets/js/main.js"></script>
-
+<script>
+   window.addEventListener('pageshow', (event) => {
+  // Check if the page is retrieved from the bfcache
+  if (event.persisted && !document.cookie.match(/jwt/)) {
+    // Force a reload if the user has logged out
+    location.reload();
+  }
+ });
+</script>
   <%-include('student_footer')%>
