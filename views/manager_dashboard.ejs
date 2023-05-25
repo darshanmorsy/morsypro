@@ -515,7 +515,12 @@ function searchTable() {
 	top: 0px;
 	left: 0px;
 }
-
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
 .yas5 .tickC {
 	position: absolute;
 	fill: none;
@@ -710,6 +715,15 @@ function searchTable() {
 		stroke-dashoffset: 0;
 	}
 }
-
+.hidden {
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
 </style>
+<script>
+    window.addEventListener("load", function () {
+    const loader = document.querySelector("#spinner");
+    loader.className += " hidden"; // class "loader hidden"
+});
+</script>
 <%-include('footer')%>
