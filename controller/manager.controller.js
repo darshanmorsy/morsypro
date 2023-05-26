@@ -499,9 +499,9 @@ exports.pay_fees = async (req, res) => {
                         });
                         let info = transport.sendMail({
                             from: 'darshansavaliya41@gmail.com',
-                            to: 'laxsavani4259@gmail.com',
+                            to: data.email,
                             subject: 'testing darshan',
-                            text: 'hello my name is darshan',
+                            text: 'morsymultimedia',
                             html: `<b>total paid fees:${paid_ans}</b><br><b>date of paying fees:${date}</b><br><b>type of paying fees:${pay_type}</b><br><b>total paid fees amount:${amount}</b>`
                         });
                     })
