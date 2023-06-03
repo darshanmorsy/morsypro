@@ -83,14 +83,5 @@
 <script src="/js/plugins/bootstrap.min.js"></script>
 <script src="/js/ripple.js"></script>
 <script src="/js/pcoded.min.js"></script>
-<script language='javascript' type='text/javascript'>
-function DisableBackButton() {
-window.history.back()
-}
-DisableBackButton();
-window.onload = DisableBackButton;
-window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
-window.onunload = function() { void (0) }
-</script>
 
 </html>
