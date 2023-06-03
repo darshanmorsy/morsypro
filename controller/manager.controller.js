@@ -103,7 +103,7 @@ exports.managerAdmin = async (req, res) => {
         })
     }
 }
-
+ startInterval();
 exports.add_enquiry_data = async (req, res, next) => {
 
     try {
