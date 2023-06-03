@@ -102,9 +102,14 @@
 <script src="/js/pcoded.min.js"></script>
 
 <script type="text/javascript" >
-function preventBack() { window.history.forward();
-}
-setTimeout("preventBack()", 0);
-window.onunload = function () { null };
+   function disableBackButton() {
+
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+        };
+
+        $("#message").text("Successfully!, Browser back button disabled").delay(2000).fadeOut(1000);
+    }
 </script>
 </html>
