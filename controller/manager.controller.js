@@ -56,7 +56,7 @@ exports.managerAdmin = async (req, res) => {
         const activeEnquiry = await Enquiry.find({ status: true });
         const deactiveEnquiry = await Enquiry.find({ status: false });
         const managerData = await Manager.find();
-             startInterval();
+
         function formatAMPM(date) {
             var hours = date.getHours();
             var minutes = date.getMinutes();
