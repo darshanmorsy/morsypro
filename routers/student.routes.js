@@ -130,13 +130,17 @@ router.get('/changePass', student_token, async (req, res) => {
 })
  var tokenBlacklist =[];
 router.post('/newpass', student_token, newpass)
-router.get('/logout',async(req,res)=>{
-    
-    res.cookie('jwt', '', { maxAge: 1 });
-    // const token = req.headers.authorization;
+// Assuming you have a logout route
+app.get('/logout', (req, res) => {
+  // Perform logout logic
 
-    // tokenBlacklist.push(token);
-    res.redirect("/student");
+  // Clear browser history by replacing the current URL with a new URL
+  const logoutUrl = '/logout'; // Replace with your logout URL
+  const baseUrl = window.location.origin;
+  window.history.replaceState(null, '', baseUrl + logoutUrl);
 
-})
+  // Redirect the user to the login page or any appropriate page
+  res.redirect('/login'); // Replace with your login URL
+});
+
 module.exports = router;
