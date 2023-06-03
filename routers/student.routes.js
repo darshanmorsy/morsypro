@@ -131,7 +131,7 @@ router.get('/changePass', student_token, async (req, res) => {
  var tokenBlacklist =[];
 router.post('/newpass', newpass)
 // Assuming you have a logout route
-router.get('/logout',manager_token,async(req,res) => {
+router.get('/logout',student_token,async(req,res) => {
 
     res.cookie('jwt', '', { maxAge: 1 });
     const token = req.headers.authorization;
