@@ -131,7 +131,7 @@ router.get('/changePass', student_token, async (req, res) => {
  var tokenBlacklist =[];
 router.post('/newpass', student_token, newpass)
 // Assuming you have a logout route
-app.get('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   // Perform logout logic
 
   // Clear browser history by replacing the current URL with a new URL
